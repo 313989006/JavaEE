@@ -26,6 +26,14 @@
 	<tr>
 		<th>年龄</th>
 		<td align="left"><input type="text" id="age" name="users.age" value="${users.age}" /></td>
+	</tr>
+	<tr>
+		<th>电话</th>
+		<td align="left"><input type="text" id="tel" name="users.tel" value="${users.tel}" /></td>
+	</tr>
+	<tr>
+		<th>住址</th>
+		<td align="left"><input type="text" id="address" name="users.address" value="${users.address}" /></td>
 	</tr>		
 	<tr>
 		<td colspan="2" align="left">
@@ -43,6 +51,8 @@ $(document).ready(function(){
 	$("#name").attr("datatype","Require").attr("msg","请填写您的用户名！");
 	$("#pass").attr("datatype","Require").attr("msg","请填写您的密码！");
 	$("#age").attr("datatype","Require").attr("msg","请填写您的年龄！");
+	$("#tel").attr("datatype","Require").attr("msg","请填写您的电话！");
+	$("#address").attr("datatype","Require").attr("msg","请填写您的住址！");
 	
 	$(document.forms[0]).submit(function(){
 		return Validator.Validate(this, 3);

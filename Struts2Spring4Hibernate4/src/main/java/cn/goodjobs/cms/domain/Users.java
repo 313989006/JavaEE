@@ -9,6 +9,28 @@ public class Users {
 	private String pass;
 	
 	private Integer age;
+	private Integer tel;
+	private String address;
+	public Integer getTel()
+	{
+		return tel;
+	}
+
+	public void setTel(Integer tel)
+	{
+		this.tel = tel;
+	}
+
+	public String getAddress()
+	{
+		return address;
+	}
+
+	public void setAddress(String address)
+	{
+		this.address = address;
+	}
+
 	
 	public Users(){
 		

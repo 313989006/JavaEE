@@ -20,11 +20,19 @@
 		<th align="left">
 			<input type="text" name="users.name" value="${users.name}" />&nbsp;&nbsp;
 		</th>
+		<th>电话</th>
+		<th align="left">
+			<input type="text" name="users.tel" value="${users.tel}" />&nbsp;&nbsp;
+		</th>
 	</tr>
 	<tr>
 		<th>密码</th>
 		<th align="left">
 			<input type="text" name="users.pass" value="${users.pass}" />
+		</th>
+		<th>住址</th>
+		<th align="left">
+			<input type="text" name="users.address" value="${users.address}" />
 		</th>
 		<th>年龄</th>
 		<th align="left">
@@ -43,6 +51,8 @@
 		<th>姓名</th>
 		<th>密码</th>
 		<th>年龄</th>
+		<th>电话</th>
+		<th>住址</th>
 		<th>操作</th>
 	</tr>
 	<c:forEach items="${usersList}" var="users" varStatus="vs" >	
@@ -52,6 +62,8 @@
 		<td>${users.name}</td>
 		<td>${users.pass}</td>
 		<td>${users.age}</td>
+		<td>${users.tel}</td>
+		<td>${users.address}</td>
 		<td width="120">
 			<a href="editUsers.action?users.id=${users.id}">修改</a>&nbsp;
 			<a href="deleteUsers.action?users.id=${users.id}">删除</a>
@@ -65,6 +77,8 @@
 <input type="hidden" name="users.name" value="${users.name}" />
 <input type="hidden" name="users.pass" value="${users.pass}" />
 <input type="hidden" name="users.age" value="${users.age}" />
+<input type="hidden" name="users.tel" value="${users.tel}" />
+<input type="hidden" name="users.address" value="${users.address}" />
 <table  align="center" border="0" cellspacing="0" width="680">
 	<tr>
 		<td align="center">

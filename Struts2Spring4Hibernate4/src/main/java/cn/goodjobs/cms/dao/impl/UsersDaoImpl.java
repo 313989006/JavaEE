@@ -28,24 +28,24 @@ public class UsersDaoImpl extends HibernateDaoSupport implements UsersDao {
 	 }
 	 
 	
-	@Override
+	//@Override
 	public Long insert(Users users){
 		return (Long)this.getCurrentSession().save(users);
 	}
 
-	@Override
+	//@Override
 	public Long update(Users users){
 		this.getCurrentSession().update(users);
 		return 1L;
 	}
 
-	@Override
+	//@Override
 	public Long delete(Long id){
 		this.getCurrentSession().delete(new Users(id));
 		return 1L;
 	}
 
-	@Override
+	//@Override
 	public Users getUser(Long id){
 		return (Users)this.getCurrentSession().get(Users.class, id);
 	}
@@ -53,7 +53,7 @@ public class UsersDaoImpl extends HibernateDaoSupport implements UsersDao {
 
 
 	@SuppressWarnings("unchecked")
-	@Override
+	//@Override
 	public List<Users> getUsersList(Users users){	
 		String hql = "from Users where 1 = 1";
 		if(users.getId() != null){
@@ -81,7 +81,13 @@ public class UsersDaoImpl extends HibernateDaoSupport implements UsersDao {
 		}
 		if(users.getAge() != null){
 			query.setInteger("age", users.getAge());
-		}		
+		}
+		if(users.getTel() != null){
+			query.setInteger("tel", users.getTel());
+		}
+		if(StringUtils.isNotBlank(users.getAddress())){
+			query.setString("address", users.getAddress());
+		}
 		List<Users> usersList = (List<Users>)query.list();
 		return usersList;
 	}
@@ -89,7 +95,7 @@ public class UsersDaoImpl extends HibernateDaoSupport implements UsersDao {
 	
 
 	@SuppressWarnings("unchecked")
-	@Override
+	//@Override
 	public int getUsersCount(Users users) {
 		Criteria c = this.getCurrentSession().createCriteria(Users.class);
 		if(users.getId() != null){
@@ -104,6 +110,12 @@ public class UsersDaoImpl extends HibernateDaoSupport implements UsersDao {
 		if(users.getAge() != null){
 			c.add(Restrictions.eq("age", users.getAge()));
 		}	
+		if(users.getTel() != null){
+			c.add(Restrictions.eq("tel", users.getTel()));
+		}	
+		if(StringUtils.isNotBlank(users.getAddress())){
+			c.add(Restrictions.eq("address", users.getAddress()));
+		}
 		List<Users> list = (List<Users>)c.list();
 		if(list != null && list.size() > 0){
 			return list.size();
@@ -112,7 +124,7 @@ public class UsersDaoImpl extends HibernateDaoSupport implements UsersDao {
 	}
 
 	@SuppressWarnings("unchecked")
-	@Override
+	//@Override
 	public List<Users> getUsersPaginatedList(Users users, int first, int count) {
 		Criteria c = this.getCurrentSession().createCriteria(Users.class);
 		if(users.getId() != null){
@@ -126,6 +138,12 @@ public class UsersDaoImpl extends HibernateDaoSupport implements UsersDao {
 		}
 		if(users.getAge() != null){
 			c.add(Restrictions.eq("age", users.getAge()));
+		}	
+		if(users.getTel() != null){
+			c.add(Restrictions.eq("tel", users.getTel()));
+		}	
+		if(users.getAddress() != null){
+			c.add(Restrictions.eq("address", users.getAddress()));
 		}	
 		c.setFirstResult(first);//分页查询起始位置
 		c.setMaxResults(count);//每次查询多少条纪录
